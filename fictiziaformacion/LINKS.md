@@ -3,7 +3,7 @@
 * [Node.js API](http://nodejs.org/api/).
 * [Node School](http://nodeschool.io/).
 * [Socket.io](http://socket.io/).
-* [Meteor](https://www.meteor.com/).
+* [Meteor](http://nodejs.org/api/).
 * [Kraken](http://krakenjs.com/).
 * 
 
