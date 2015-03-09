@@ -3,6 +3,8 @@
 ## Setup Git and basic commands
 
 * Setup `git: git config remote.origin.push HEAD`.
+ * `git config --global user.name "John Doe"`.
+ * `git config --global user.email johndoe@example.com`.
 * Git commands: `git status, git add, git rm, git pull, git commit -m "Commit message", git push`.
 
 ## First steps with Node.js
