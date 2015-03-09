@@ -107,10 +107,18 @@ http://localhost:8888/start?foo=bar&hello=world
                    querystring.parse(string)["hello"]
 ```
 
-Here we can see which Node.js modules should be used when parsing the URL, in order to achieve a correct interpretation and build a router.
+Here we can see which Node.js modules should be used when parsing the request's URL, in order to achieve a correct interpretation and build a router.
 
-...
+__Practice:__ create a router module that exports a single method `route`, that should be passed to our `server.start` method.
 
-__Practice:__ ...
+Now let's talk about the __Request Handler__ concept. We don't want our router to be responsible of how each request is handled, as that would lead us to a non scalable situation.
+
+We'll have to build a request handling module, so that we've some way of storing each possible route of our application, and different methods that will trigger whenever those routes are requested, if there's no handler for a given route, our router will act accordingly if necessary.
+
+__Practice:__ create a request handler module, so that it can use different handler methods, and they can be assigned to each configured route. The router must be modified so that it'll check requested handler exists, or redirect to a 404 message page.
+
+### Wiring all together
+
+Now that we know how to use the `fs` module to access our system information, and how to create and manage a server and handle its routes, it's the moment to build a complete server application, please refer to [PRACTICE.md](PRACTICE.md) #3 task for further detail.
 
 ...
