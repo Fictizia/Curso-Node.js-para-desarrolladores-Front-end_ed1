@@ -55,13 +55,14 @@ In this example, we can see the `require` method being used to import the http m
 
 __Practice:__ build an script that automatize our `manifest.appcache` file, take a look at [PRACTICE.md](PRACTICE.md) for reference.
 
-### Modularity
+### [Modularity](https://nodejs.org/api/modules.html)
 
 If we want to make a good application with Node.js, we must learn to modularize our code, so that we can `require` them whenever they're necessary. You can use `export` from a module to allow access to your module's functionality:
 
 ```
 // server.js
-var http = require("http");
+var http = require("http"),
+    url = require("url");
 
 function serverStart() {
     http.createServer(function(request, response) {
