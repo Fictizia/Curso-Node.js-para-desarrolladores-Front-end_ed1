@@ -2,6 +2,8 @@
 var url = require("url");
 
 function routeURL (pcURL, pfHandle, pJSON_Paths, poResponse) {
+    console.log('Pathname ' + url.parse(pcURL).pathname);
+    
     var fRouteHandler = pfHandle(url.parse(pcURL).pathname, pJSON_Paths);
     
     if (!fRouteHandler) {
