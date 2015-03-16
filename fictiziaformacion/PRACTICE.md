@@ -13,6 +13,7 @@
 3. Create different routes for our server application:
  * Define routes that will interact with our filesystem module, so that you can show our web app content, and use it to configure our `manifest.appcache` file.
  * Create the routes that you think are needed for the preview file and build file actions.
+4. Complete our web server, so that it can serve static files.
 
 ## To be determined
 
