@@ -14,6 +14,10 @@
  * Define routes that will interact with our filesystem module, so that you can show our web app content, and use it to configure our `manifest.appcache` file.
  * Create the routes that you think are needed for the preview file and build file actions.
 4. Complete our web server, so that it can serve static files.
+ * Build a log service, that stores our server's petitions, and also create server routes for showing and handling the logs.
+ * Integrate [zlib](https://nodejs.org/api/zlib.html) with our static file server.
+ * Investigate about response heads, so that we can complete the information needed for each file petition.
+ * Complete the mimeTypes list, and create some kind of configuration for our assets location.
 
 ## To be determined
 
