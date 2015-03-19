@@ -1,4 +1,4 @@
 {
     "/": "responseHome",
-    "/search": "responseHola"
+    "/hola": "responseHola"
 }

@@ -11,5 +11,6 @@ fs.readFile('routes.json', 'utf-8', function(error, data){
         throw error;
     }
     JSON_paths = data;
-    server.start(router.route, handler.handle, JSON.parse(JSON_paths));
+    console.log('data: ' +data);
+    server.start(router.route, handler.handle, JSON.parse(data));
 });
