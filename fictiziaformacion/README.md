@@ -201,8 +201,62 @@ process.stdin.pipe(process.stdout);
 
 [Transform](https://nodejs.org/api/stream.html#stream_class_stream_transform_1) streams are __Duplex__ streams where the output is in some way computed from the input. They implement both the __Readable__ and __Writable__ interfaces.
 
+---
+
 ### Using the request POST method
 
-...
+In order to receive POST parameters, we'll need to listen to the `data`  and `end` events of our `request`, and then parse the result in a JSON format, so that we can work with those parameters.
+
+Once we have received our POST parameters, we'll have to create a suitable `response`, be it a file or a manufactured stream.
+
+Take a look at `router.js` and `request_handler.js` for code explanation.
+
+### [Using zlib](https://nodejs.org/api/zlib.html)
+
+```
+var zlib = require('zlib');
+```
+
+This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. Each class takes the same options, and is a readable/writable Stream.
+
+Take a look at `examples\zlib.js` for code explanation.
+
+### Watching changes on a file
+
+Both of these implementations are unstable right now, but they' can be used to achieve different strategies.
+
+In order to understand how changes on a file works, we should also know a little more about [stat, fstat and lstat linux commands](http://linux.die.net/man/2/fstat).
+
+__[fs.watchFile(filename[, options], listener)](https://nodejs.org/api/fs.html#fs_fs_watchfile_filename_options_listener)__
+
+```
+fs.watchFile('message.text', function (curr, prev) {
+    console.log('the current mtime is: ' + curr.mtime);
+    console.log('the previous mtime was: ' + prev.mtime);
+});
+```
+
+__[fs.watch(filename[, options][, listener])](https://nodejs.org/api/fs.html#fs_fs_watch_filename_options_listener)__
+
+```
+fs.watch('somedir', function (event, filename) {
+    console.log('event is: ' + event);
+    if (filename) {
+        console.log('filename provided: ' + filename);
+    } else {
+        console.log('filename not provided');
+    }
+});
+```
+
+### WebSockets
+
+* [Node.js and Websocket simple chat tutorial](http://ahoj.io/nodejs-and-websocket-simple-chat-tutorial).
+* [WebSocket Node project](https://github.com/theturtle32/WebSocket-Node).
+* [Using Node.js and Websockets to Build a Chat Service](http://code.tutsplus.com/tutorials/using-nodejs-and-websockets-to-build-a-chat-service--net-34482).
+
+### Firebase
+
+[Using Firebase from Node.js](https://www.firebase.com/docs/web/quickstart.html).
 
 ---
