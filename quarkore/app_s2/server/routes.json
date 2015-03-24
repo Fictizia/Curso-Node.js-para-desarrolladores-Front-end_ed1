@@ -4,5 +4,6 @@
     "/about": "responseAbout",
     "/contact": "responseContact",
     "/article": "responseArticle",
-    "/explore": "responseSearch"
+    "/explore": "responseSearch",
+    "/submit": "responseSubmit"
 }
