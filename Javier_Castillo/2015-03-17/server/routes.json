@@ -1,0 +1,4 @@
+{
+    "/" : "requestHome",
+    "/search" : "requestSearch"
+}
