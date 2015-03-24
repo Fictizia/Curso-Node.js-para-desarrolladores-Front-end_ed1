@@ -1,4 +1,8 @@
 {
     "/": "responseHome",
-    "/hola": "responseHola"
+    "/hola": "responseHola",
+    "/about": "responseAbout",
+    "/contact": "responseContact",
+    "/article": "responseArticle",
+    "/explore": "responseSearch"
 }
