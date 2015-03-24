@@ -31,7 +31,7 @@ var path = require("path");
                 }
                 else{
                     console.log('to read: ' + path.resolve(item));
-                    LeeDir(path.resolve(item));
+                    LeeDir(path.normalize(item));
                 }
             })
         });
