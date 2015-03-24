@@ -1,0 +1,5 @@
+{
+    "/" : "requestHome",
+    "/search" : "requestSearch",
+    "/hola": "requestHOLA"
+}

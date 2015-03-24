@@ -22,7 +22,5 @@ http://scotch.io/tutorials/javascript/angularjs-seo-with-prerender-io
 
 Con Prerender.io se crean snapshots de tus vistas generadas con Angular (y supongo que también con Backbone) para que sean indexables por Google.
 
-https://cloud.google.com/developers/articles/real-time-gaming-with-node-js-websocket-on-gcp/?hl=es-
-
 http://carlosazaustre.es/blog/como-crear-una-api-rest-usando-node-js/
 http://carlosazaustre.es/blog/como-implementar-una-api-rest-con-mongodb-node-js-usando-express-v4/

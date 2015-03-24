@@ -1,6 +1,6 @@
 # Node.js
 
-## Setup Git and basic commands
+## [Setup Git and basic commands](http://git-scm.com/book/es/v1/Empezando-Configurando-Git-por-primera-vez)
 
 * Setup `git: git config remote.origin.push HEAD`.
  * `git config --global user.name "John Doe"`.
@@ -54,6 +54,8 @@ http.createServer(function(request, response) {
 In this example, we can see the `require` method being used to import the http module for our own process.
 
 __Practice:__ build an script that automatize our `manifest.appcache` file, take a look at [PRACTICE.md](PRACTICE.md) for reference.
+
+---
 
 ### [Modularity](https://nodejs.org/api/modules.html)
 
@@ -122,4 +124,139 @@ __Practice:__ create a request handler module, so that it can use different hand
 
 Now that we know how to use the `fs` module to access our system information, and how to create and manage a server and handle its routes, it's the moment to build a complete server application, please refer to [PRACTICE.md](PRACTICE.md) #3 task for further detail.
 
-...
+---
+
+## Building a complete static files web server
+
+In order to build a working web server, we must understand how to serve different files from it without blocking the server process.
+
+### Using the [Buffer](https://nodejs.org/api/buffer.html) class
+
+Pure JavaScript is Unicode friendly but not nice to binary data. When dealing with TCP streams or the file system, it's necessary to handle octet streams. Node has several strategies for manipulating, creating, and consuming octet streams.
+
+Raw data is stored in instances of the `Buffer` class. A `Buffer` is similar to an array of integers but corresponds to a raw memory allocation outside the V8 heap. A `Buffer` cannot be resized.
+
+The `Buffer` class is a global, making it very rare that one would need to ever `require('buffer')`.
+
+### Using the [Stream](https://nodejs.org/api/stream.html) class
+
+A stream is a concept that was popularized in the early days of unix. It is an input/output (I/O) mechanism for transmitting data from one program to another. The streaming data is delivered in chunks which allows for efficient use of memory and realtime communication.
+
+Here is a very simple example of reading a stream from file and piping to an HTTP response:
+
+```
+var fs = require('fs'),
+    http = require('http');
+
+var server = http.createServer(function (req, res) {
+  // logic here to determine what file, etc
+  var rstream = fs.createReadStream('existingFile');
+  rstream.pipe(res); // pipe file to response
+});
+```
+
+__[Why use them in building applications?](http://codewinds.com/blog/2013-07-25-streams-what-why.html)__
+
+* Smaller, focused modules.
+* Standard API for input/output which can even cross process boundaries.
+* Streams can allow us to use less memory and serve more concurrent users.
+* Realtime updates using streams and sockets.
+
+A Node.js stream is an abstract interface implemented by various objects in Node. For example a request to an __HTTP server__ is a stream, as is __stdout__. Streams are readable, writable, or both. All streams are instances of __EventEmitter__.
+
+You can load the Stream base classes by doing `require('stream')`. There are base classes provided for __Readable__ streams, __Writable__ streams, __Duplex__ streams, and __Transform__ streams.
+
+__Listening to stream events__
+
+Node.js streams are event emitters so you can listen to its events to monitor the data being transmitted.
+
+```
+var dataLength = 0;
+// using a readStream that we created already
+rstream
+  .on('data', function (chunk) {
+    dataLength += chunk.length;
+  })
+  .on('end', function () {  // done
+    console.log('The length was:', dataLength);
+  });
+```
+
+You can also pipe chains so that the file content is processed:
+
+```
+var r = fs.createReadStream('file.txt');
+var z = zlib.createGzip();
+var w = fs.createWriteStream('file.txt.gz');
+r.pipe(z).pipe(w);
+```
+
+Or interact with the terminal process:
+
+```
+process.stdin.pipe(process.stdout);
+```
+
+[Duplex](https://nodejs.org/api/stream.html#stream_class_stream_duplex_1) streams are streams that implement both the __Readable__ and __Writable__ interfaces.
+
+[Transform](https://nodejs.org/api/stream.html#stream_class_stream_transform_1) streams are __Duplex__ streams where the output is in some way computed from the input. They implement both the __Readable__ and __Writable__ interfaces.
+
+---
+
+### Using the request POST method
+
+In order to receive POST parameters, we'll need to listen to the `data`  and `end` events of our `request`, and then parse the result in a JSON format, so that we can work with those parameters.
+
+Once we have received our POST parameters, we'll have to create a suitable `response`, be it a file or a manufactured stream.
+
+Take a look at `router.js` and `request_handler.js` for code explanation.
+
+### [Using zlib](https://nodejs.org/api/zlib.html)
+
+```
+var zlib = require('zlib');
+```
+
+This provides bindings to Gzip/Gunzip, Deflate/Inflate, and DeflateRaw/InflateRaw classes. Each class takes the same options, and is a readable/writable Stream.
+
+Take a look at `examples\zlib.js` for code explanation.
+
+### Watching changes on a file
+
+Both of these implementations are unstable right now, but they' can be used to achieve different strategies.
+
+In order to understand how changes on a file works, we should also know a little more about [stat, fstat and lstat linux commands](http://linux.die.net/man/2/fstat).
+
+__[fs.watchFile(filename[, options], listener)](https://nodejs.org/api/fs.html#fs_fs_watchfile_filename_options_listener)__
+
+```
+fs.watchFile('message.text', function (curr, prev) {
+    console.log('the current mtime is: ' + curr.mtime);
+    console.log('the previous mtime was: ' + prev.mtime);
+});
+```
+
+__[fs.watch(filename[, options][, listener])](https://nodejs.org/api/fs.html#fs_fs_watch_filename_options_listener)__
+
+```
+fs.watch('somedir', function (event, filename) {
+    console.log('event is: ' + event);
+    if (filename) {
+        console.log('filename provided: ' + filename);
+    } else {
+        console.log('filename not provided');
+    }
+});
+```
+
+### WebSockets
+
+* [Node.js and Websocket simple chat tutorial](http://ahoj.io/nodejs-and-websocket-simple-chat-tutorial).
+* [WebSocket Node project](https://github.com/theturtle32/WebSocket-Node).
+* [Using Node.js and Websockets to Build a Chat Service](http://code.tutsplus.com/tutorials/using-nodejs-and-websockets-to-build-a-chat-service--net-34482).
+
+### Firebase
+
+[Using Firebase from Node.js](https://www.firebase.com/docs/web/quickstart.html).
+
+---
