@@ -251,6 +251,8 @@ fs.watch('somedir', function (event, filename) {
 
 ### WebSockets
 
+__Why Socket.io isn't always the best solution?__, just because will try to proxy HTML5 WebSockets implementation, if the actual browser doesn't follow it, so that Socket.io will load an Ajax, Flash or iFrame alternative, using more latency and bandwith. 
+
 * [Node.js and Websocket simple chat tutorial](http://ahoj.io/nodejs-and-websocket-simple-chat-tutorial).
 * [WebSocket Node project](https://github.com/theturtle32/WebSocket-Node).
 * [Using Node.js and Websockets to Build a Chat Service](http://code.tutsplus.com/tutorials/using-nodejs-and-websockets-to-build-a-chat-service--net-34482).

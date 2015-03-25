@@ -5,7 +5,7 @@
 process.title = 'node-chat';
  
 // Port where we'll run the websocket server
-var webSocketsServerPort = 1337;
+var webSocketsServerPort = process.env.PORT;
  
 // websocket and http servers
 var webSocketServer = require('websocket').server;
@@ -38,8 +38,8 @@ colors.sort(function(a,b) { return Math.random() > 0.5; } );
 var server = http.createServer(function(request, response) {
     // Not important for us. We're writing WebSocket server, not HTTP server
 });
-server.listen(webSocketsServerPort, function() {
-    console.log((new Date()) + " Server is listening on port " + webSocketsServerPort);
+server.listen(webSocketsServerPort, process.env.IP, function() {
+    console.log((new Date()) + " Server is listening on " + process.env.IP + ":" + webSocketsServerPort);
 });
  
 /**
