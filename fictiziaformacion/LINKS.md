@@ -31,6 +31,7 @@
 * [Node.js Advanced Servers](https://learn.bevry.me/node/server-part2).
 * [Using Node.js and Websockets to Build a Chat Service](http://code.tutsplus.com/tutorials/using-nodejs-and-websockets-to-build-a-chat-service--net-34482).
 * [Using Firebase from Node.js](https://www.firebase.com/docs/web/quickstart.html).
+* [Create a Node.js project from scratch with node-sass](https://www.codefellows.org/blog/create-a-node-js-project-from-scratch-with-node-sass).
 
 ## Unix Commands
 
