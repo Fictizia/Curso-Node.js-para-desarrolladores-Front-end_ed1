@@ -5,11 +5,21 @@
 process.title = 'node-chat';
  
 // Port where we'll run the websocket server
-var webSocketsServerPort = process.env.PORT;
+var webSocketsServerPort = 1337;
  
 // websocket and http servers
 var webSocketServer = require('websocket').server;
 var http = require('http');
+var fs = require('fs'),
+    url = require("url"),
+    path = require("path"),
+    goMimeTypes = {
+        "html": "text/html",
+        "jpeg": "image/jpeg",
+        "jpg": "image/jpeg",
+        "png": "image/png",
+        "js": "text/javascript",
+        "css": "text/css"};
  
 /**
  * Global variables
@@ -35,11 +45,26 @@ colors.sort(function(a,b) { return Math.random() > 0.5; } );
 /**
  * HTTP server
  */
-var server = http.createServer(function(request, response) {
+var server = http.createServer(function(poRequest, poResponse) {
     // Not important for us. We're writing WebSocket server, not HTTP server
+    var cURL = poRequest.url,
+        cPathname = url.parse(cURL).pathname,
+        cStaticFileExtension = path.extname(cPathname),
+        cStaticFileMimeType = goMimeTypes[cStaticFileExtension.replace('.', '')],
+        oStream = {};
+    
+    if (cStaticFileExtension == '.js') {
+        poResponse.writeHead(200, {"Content-Type": "text/javascript"});
+        oStream = fs.createReadStream('chat.js');
+    } else {
+        poResponse.writeHead(200, {"Content-Type": "text/html"});
+        oStream = fs.createReadStream('chat.html');
+    }
+    oStream.pipe(poResponse);
+    
 });
-server.listen(webSocketsServerPort, process.env.IP, function() {
-    console.log((new Date()) + " Server is listening on " + process.env.IP + ":" + webSocketsServerPort);
+server.listen(webSocketsServerPort, function() {
+    console.log((new Date()) + " Server is listening on port " + webSocketsServerPort);
 });
  
 /**
