@@ -24,6 +24,8 @@
  * Add node-sass compiler to our watcher service.
 7. WebSockets.
 8. Firebase integration.
+ * Create a page for inserting new data in our new firebase.
+ * Modify our search page so that it can handle our database results.
 ---
 
 ## To be determined
