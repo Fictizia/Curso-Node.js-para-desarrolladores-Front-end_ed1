@@ -17,6 +17,8 @@
 
 ## Articles
 
+* [A simple TCP based chat server written in node.js](https://gist.github.com/creationix/707146).
+* [TCP Socket Programming in Node.js](http://www.hacksparrow.com/tcp-socket-programming-in-node-js.html).
 * [Websockets 101 (2012)](http://lucumr.pocoo.org/2012/9/24/websockets-101/).
 * [Websockets basics](http://www.html5rocks.com/es/tutorials/websockets/basics/).
 * [Node.js and Websocket simple chat tutorial](http://ahoj.io/nodejs-and-websocket-simple-chat-tutorial).

@@ -249,6 +249,11 @@ fs.watch('somedir', function (event, filename) {
 });
 ```
 
+### TCP Sockets
+
+* [Net Module](https://nodejs.org/api/net.html).
+* [A simple TCP based chat server written in node.js](https://gist.github.com/creationix/707146).
+
 ### WebSockets
 
 __Why Socket.io isn't always the best solution?__, just because will try to proxy HTML5 WebSockets implementation, if the actual browser doesn't follow it, so that Socket.io will load an Ajax, Flash or iFrame alternative, using more latency and bandwith. 
