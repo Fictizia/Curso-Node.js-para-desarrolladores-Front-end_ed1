@@ -1,0 +1,9 @@
+{
+  "firebase": "fictizia-node",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
