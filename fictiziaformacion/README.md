@@ -266,6 +266,8 @@ __Why Socket.io isn't always the best solution?__, just because will try to prox
 
 [Using Firebase from Node.js](https://www.firebase.com/docs/web/quickstart.html).
 
+---
+
 Now that we now how to read, save and modify data with Firebase, it's time to modify our app so that we have a full operational application. Take a look at [PRACTICE.md](PRACTICE.md) #8 and #9.
 
 You'll find useful to know that there're some [Node.js Globals](https://nodejs.org/docs/latest/api/globals.html) available to you to simplify your work.
