@@ -1,3 +1,6 @@
+// client.js
+/* globals readCookie, eraseCookie */
+
 $(function window_onDocumentReady () {
     
     if ($('body').hasClass('new-alumn')) {
@@ -6,8 +9,8 @@ $(function window_onDocumentReady () {
                 cFirstName = readCookie('firstName'),
                 cLastName = readCookie('lastName');
                 
-            if (cActionStatus) {
-                window.alert(cActionStatus + '\n' + cFirstName + '\n' + cLastName);
+            if (cActionStatus && cActionStatus === 'ok') {
+                window.alert('Alumn ' + cFirstName + ' ' + cLastName + ' saved!');
             }
         })();
     }

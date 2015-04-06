@@ -6,6 +6,8 @@
 * [Meteor](http://nodejs.org/api/).
 * [Kraken](http://krakenjs.com/).
 * [Expressjs](http://expressjs.com/).
+* [Loopback.io](http://loopback.io).
+* [Firebase](http://firebase.com).
 * [MongoDB](http://www.mongodb.org/).
 * [Mongoose](http://mongoosejs.com/).
 

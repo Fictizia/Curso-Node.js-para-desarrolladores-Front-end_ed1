@@ -28,10 +28,14 @@
  * Create a page for inserting new data in our new firebase.
  * Use your response cookies header for sending the operation result to the user.
  * Modify our search page so that it can handle our database results.
+9. Refactorization.
  * Use a new module for our app configuration variables.
  * Change our `routes.json` handling on `app.js` so that now it loads our route handlers like a node module.
-9. Express.
- * ...
+ * Remove our `eval(...)` expressions from `request_handler.js` and use direct calls to our methods.
+10. Express.
+ * Build an static server with our previous client code.
+ * Create a parallel server project, trying to replicate the routes we used before.
+
 ---
 
 ## To be determined
