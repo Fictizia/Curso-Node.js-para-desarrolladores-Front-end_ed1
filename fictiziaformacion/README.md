@@ -266,4 +266,14 @@ __Why Socket.io isn't always the best solution?__, just because will try to prox
 
 [Using Firebase from Node.js](https://www.firebase.com/docs/web/quickstart.html).
 
+Now that we now how to read, save and modify data with Firebase, it's time to modify our app so that we have a full operational application. Take a look at [PRACTICE.md](PRACTICE.md) exercise #8.
+
+You'll find useful to know that there're some [Node.js Globals](https://nodejs.org/docs/latest/api/globals.html) available to you to simplify your work.
+
+Also, remember that we can use our response to send cookies inside the header to our clients, so that you'll be able to inform them about their actions progress. If you don't set an expiration date, they'll be alive for the current session only.
+
+### Express
+
+Introduction to express web framework.
+
 ---

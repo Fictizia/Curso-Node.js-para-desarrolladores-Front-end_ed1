@@ -14,6 +14,7 @@
 * [File Cache](https://www.npmjs.com/package/file-cache).
 * [Node Sass](https://www.npmjs.com/package/node-sass).
 * [Node Sass Middleware](https://www.npmjs.com/package/node-sass-middleware).
+* [Connect Middleware](https://github.com/senchalabs/connect#readme).
 
 ## Articles
 
@@ -34,6 +35,7 @@
 * [Using Node.js and Websockets to Build a Chat Service](http://code.tutsplus.com/tutorials/using-nodejs-and-websockets-to-build-a-chat-service--net-34482).
 * [Using Firebase from Node.js](https://www.firebase.com/docs/web/quickstart.html).
 * [Create a Node.js project from scratch with node-sass](https://www.codefellows.org/blog/create-a-node-js-project-from-scratch-with-node-sass).
+* [Top 10 mistakes node developers make](https://www.airpair.com/node.js/posts/top-10-mistakes-node-developers-make).
 
 ## Unix Commands
 

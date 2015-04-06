@@ -1,4 +1,5 @@
 {
-    "/": "responseHome",
-    "/search": "responseSearch"
+    "/": "handle_home",
+    "/search": "handle_search",
+    "/new": "handle_new"
 }

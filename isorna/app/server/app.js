@@ -2,13 +2,8 @@
 var server = require("server"),
     router = require("router"),
     handler = require("request_handler"),
-    fs = require("fs");
+    appConfig = require("app-config");
 
-fs.readFile('routes.json', 'utf8', function (poErr, poData) {
-    if (poErr) {
-        throw poErr;
-    }
+process.title = 'Web Server App';
 
-    server.start(router.route, handler.handle, JSON.parse(poData));
-});
-    
+server.start(router.route, handler.handle, appConfig.routes);
