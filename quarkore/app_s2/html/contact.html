@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>Contact - My node app</title>
+        <link rel="stylesheet" href="css/main.css" type="text/css">
     </head>
     <body>
         <h1>Contact</h1>
@@ -17,10 +18,13 @@
         <h2>Contact Form</h2>
         <form action="/submit" method="post">
             <input type="text" name="name" placeholder="Insert your name here.">
-            <!--input type="text" name="email" placeholder="Insert your email here.">
+            <input type="text" name="email" placeholder="Insert your email here.">
             <input type="text" name="country" placeholder="Please tell me where are you from.">
-            <input type="textarea" name="message" placeholder="Write something here..."-->
+            <input type="textarea" name="message" placeholder="Write something here...">
             <input type="submit" value="enviar">
         </form>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="js/cookies.js"></script>
+        <script type="text/javascript" src="js/client.js"></script>
     </body>
 </html>
