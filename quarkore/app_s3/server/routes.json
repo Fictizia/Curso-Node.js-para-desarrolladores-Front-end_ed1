@@ -1,0 +1,9 @@
+{
+    "/": "responseHome",
+    "/hola": "responseHola",
+    "/about": "responseAbout",
+    "/contact": "responseContact",
+    "/article": "responseArticle",
+    "/explore": "responseSearch",
+    "/submit": "responseSubmit"
+}
