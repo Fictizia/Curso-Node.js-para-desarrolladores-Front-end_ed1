@@ -23,9 +23,19 @@
 6. Create a watcher for one of our files, so that i'll inform us from the terminal whenever it's been changed.
  * Add node-sass compiler to our watcher service.
 7. WebSockets.
+ * Use your computer terminal for testing `websockets` example, as it's not possible to test it inside c9.io due to websockets and ports behaviour inside a virtual machine.
 8. Firebase integration.
  * Create a page for inserting new data in our new firebase.
+ * Use your response cookies header for sending the operation result to the user.
  * Modify our search page so that it can handle our database results.
+9. Refactorization.
+ * Use a new module for our app configuration variables.
+ * Change our `routes.json` handling on `app.js` so that now it loads our route handlers like a node module.
+ * Remove our `eval(...)` expressions from `request_handler.js` and use direct calls to our methods.
+10. Express.
+ * Build an static server with our previous client code.
+ * Create a parallel server project, trying to replicate the routes we used before.
+
 ---
 
 ## To be determined

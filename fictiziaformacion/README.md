@@ -267,3 +267,68 @@ __Why Socket.io isn't always the best solution?__, just because will try to prox
 [Using Firebase from Node.js](https://www.firebase.com/docs/web/quickstart.html).
 
 ---
+
+Now that we now how to read, save and modify data with Firebase, it's time to modify our app so that we have a full operational application. Take a look at [PRACTICE.md](PRACTICE.md) #8 and #9.
+
+You'll find useful to know that there're some [Node.js Globals](https://nodejs.org/docs/latest/api/globals.html) available to you to simplify your work.
+
+Also, remember that we can use our response to send cookies inside the header to our clients, so that you'll be able to inform them about their actions progress. If you don't set an expiration date, they'll be alive for the current session only.
+
+### [Express](http://expressjs.com/)
+
+Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
+
+With a myriad of HTTP utility methods and middleware at your disposal, creating a robust API is quick and easy.
+
+Express provides a thin layer of fundamental web application features, without obscuring Node features that you know and love.
+
+Develop model-driven apps with an Express-based framework. Find out more at loopback.io.
+
+__Installation__
+
+```
+npm install -g express
+```
+
+We can also use the Express [Generator](http://expressjs.com/starter/generator.html), `express`, to quickly create a application skeleton.
+
+```
+npm install express-generator -g
+```
+
+Take a look at `hello-world.js` example for your first code introduction with express.
+
+An Express application is essentially a series of [middleware](http://expressjs.com/guide/using-middleware.html) calls.
+
+With express, we can have [more than one handler function for each route](http://expressjs.com/guide/routing.html). Remember that you always need to terminate the request response cycle, or the request will be left hanging.
+
+__Warning:__ be careful with how you handle routes, sub-stacks and route redirections, things may get messy!.
+
+Serving [static files with express is very easy](http://expressjs.com/starter/static-files.html), and allows you to combine different static folders or simulate virtual folders for your files. Take a look at `static-server.js` for code explanation.
+
+__How do you handle 404s?__
+
+In Express, 404s are not the result of an error. Therefore, the error-handler middleware will not capture 404s. This is because a 404 is simply the absence of additional work to do; in other words, Express has executed all middleware / routes, and found that none of them responded. All you need to do is add a middleware at the very bottom (below all others) to handle a 404:
+
+```
+app.use(function(req, res, next) {
+    res.status(404).send('Sorry cant find that!');
+});
+```
+
+__How do you setup an error handler?__
+
+You define error-handling middleware the same way as other middleware, except with four arguments instead of three; specifically with the signature (err, req, res, next):
+
+```
+app.use(function(err, req, res, next) {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+});
+```
+
+__How do I render plain HTML?__
+
+You don’t! There’s no need to “render” HTML with `res.render()`. If you have a specific file, use `res.sendFile()`. If you are serving many assets from a directory use the `express.static()` middleware.
+
+---
