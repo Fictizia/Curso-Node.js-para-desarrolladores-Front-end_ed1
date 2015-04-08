@@ -35,6 +35,9 @@
 10. Express.
  * Build an static server with our previous client code.
  * Create a parallel server project, trying to replicate the routes we used before.
+ * _Optional:_ use an ajax call for our insertion form, instead of the html form post method.
+ * Create jade templates for our pages, following `express` folder structure.
+ * Create our search page, using `express` form parameters for our detail views.
 
 ---
 

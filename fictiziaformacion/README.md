@@ -254,7 +254,7 @@ fs.watch('somedir', function (event, filename) {
 * [Net Module](https://nodejs.org/api/net.html).
 * [A simple TCP based chat server written in node.js](https://gist.github.com/creationix/707146).
 
-### WebSockets
+## WebSockets
 
 __Why Socket.io isn't always the best solution?__, just because will try to proxy HTML5 WebSockets implementation, if the actual browser doesn't follow it, so that Socket.io will load an Ajax, Flash or iFrame alternative, using more latency and bandwith. 
 
@@ -262,7 +262,7 @@ __Why Socket.io isn't always the best solution?__, just because will try to prox
 * [Node.js and Websocket simple chat tutorial](http://ahoj.io/nodejs-and-websocket-simple-chat-tutorial).
 * [Using Node.js and Websockets to Build a Chat Service](http://code.tutsplus.com/tutorials/using-nodejs-and-websockets-to-build-a-chat-service--net-34482).
 
-### Firebase
+## Firebase
 
 [Using Firebase from Node.js](https://www.firebase.com/docs/web/quickstart.html).
 
@@ -274,7 +274,7 @@ You'll find useful to know that there're some [Node.js Globals](https://nodejs.o
 
 Also, remember that we can use our response to send cookies inside the header to our clients, so that you'll be able to inform them about their actions progress. If you don't set an expiration date, they'll be alive for the current session only.
 
-### [Express](http://expressjs.com/)
+## [Express](http://expressjs.com/)
 
 Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
 
@@ -330,5 +330,20 @@ app.use(function(err, req, res, next) {
 __How do I render plain HTML?__
 
 You don’t! There’s no need to “render” HTML with `res.render()`. If you have a specific file, use `res.sendFile()`. If you are serving many assets from a directory use the `express.static()` middleware.
+
+---
+
+__Jade Templates__
+
+
+
+
+---
+
+## MongoDB
+
+---
+
+## Socket.io
 
 ---
