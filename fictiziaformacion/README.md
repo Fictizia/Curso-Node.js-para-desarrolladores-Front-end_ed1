@@ -333,10 +333,127 @@ You don’t! There’s no need to “render” HTML with `res.render()`. If you 
 
 ---
 
+__Ajax Calls with express__
+
+Now that we know how to handle standard requests, we could also use `express` to handle ajax calls, in order to setup our single-page app.
+
+Take a look at examples/express/ajax-calls for code explanation.
+
+```
+// ajax-server.js
+var express = require("express"),
+    app = express.createServer();
+
+app.use(express.bodyParser());
+app.post('/search', function(req, res){
+   var oSearchForm = req.body;  // <-- search items
+   var MySearch = { // mockup database search service
+        doSearch: function (poSearchForm) {
+            var oReturnItems = [];
+            // search database here and return found items...
+            return oReturnItems;
+   }};
+   
+   MySearch.doSearch(oSearchForm,function(poError, poItems) {
+       res.send(poItems);
+   });
+});
+
+app.listen(process.env.PORT);
+```
+
+Here's a simple ajax client html page for testing purpose.
+
+```
+<!-- ajax-client.html -->
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax example</title>
+</head>
+
+<body>
+    <h1>Ajax example</h1>
+    <form method="post" action="/search">
+        <p><label for="firstname">First name:</label>
+        <input type="text" name="firstname" id="firstname" /></p>
+        <p><label for="lastname">Last Name:</label>
+        <input type="text" name="lastname" id="lastname" /></p>
+        <input type="submit" value="Save"/>
+    </form>
+    <div id="results">
+        <p><strong>Results:</strong></p>
+    </div>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        $.ajax( {
+          url: '/search',
+          data: parseFormToJSON('form'),
+          type: 'POST',
+          success: function(items) {
+              /* do something with items here */
+              // You will likely want a template so you don't have to format the string by hand
+            for( var item in items ) {
+               $('#results').append('<div>'+item.interestingField+'</div>');
+            }
+          }
+        });
+        function parseFormToJSON (pcSelector) {
+            var aFieldsArray = $(pcSelector).serializeArray(),
+                oJSON = {},
+                i = 0;
+            
+            for (i = 0; i < aFieldsArray.length; i++) {
+                oJSON[aFieldsArray[i].name] = aFieldsArray[i].value;
+            }
+            
+            return oJSON;
+        }
+    </script>
+</body>
+</html>
+```
+
+__Our first express project__
+
+Let's start our new `express` app right away:
+
+```
+express express-app
+
+cd express-app
+
+npm install
+
+```
+
+If you want to have [Nodemon](https://github.com/remy/nodemon) service active, just install it and use it instead of node:
+
+```
+npm install -g nodemon
+
+nodemon app.js
+
+```
+
+Once we've followed this steps, you'll be able to see `package.json` fully configured. Take a look at it, and observe `scripts` and `dependencies` sections closely.
+
+As you see, our project has been created with some of the most useful node modules, like `body-parser`, `cookie-parser`, `debug`, `express`, `jade`, `morgan` and `serve-favicon`. Feel free to read their README.md's, as you'll use them frecuently.
+
+Open `bin/www` and run it with node command from c9.io toolbar to start your app.
+
 __Jade Templates__
 
+First of all, you must have the [Jade Documentation](http://jade-lang.com/reference) at hand, as there're multiple commands that you'll have to learn, as with every new language.
 
+Jade is meant for writting html templates with less code, and using shortcodes for loops, variables and includes.
 
+__Important:__ don't forget to always use the same number of spaces or tabs for each indent level, or Jade will not work at all.
+
+Express is prepared for [working with Jade by default](http://expressjs.com/guide/using-template-engines.html), but you can also [use or develop other express-compatible template engines](http://expressjs.com/advanced/developing-template-engines.html), like [Swig](http://paularmstrong.github.io/swig/docs/#express) if you like.
+
+Finally, Jade also allows us to [include files inside templates](http://jade-lang.com/reference/includes/), so that we'll be able to build our template system as complex as we like.
 
 ---
 

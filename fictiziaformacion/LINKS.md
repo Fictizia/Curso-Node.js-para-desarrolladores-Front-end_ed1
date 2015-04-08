@@ -10,6 +10,8 @@
 * [Firebase](http://firebase.com).
 * [MongoDB](http://www.mongodb.org/).
 * [Mongoose](http://mongoosejs.com/).
+* [Jade Documentation](http://jade-lang.com/).
+* [Swig template system](http://paularmstrong.github.io/swig/).
 
 ## Node Modules
 
@@ -17,6 +19,7 @@
 * [Node Sass](https://www.npmjs.com/package/node-sass).
 * [Node Sass Middleware](https://www.npmjs.com/package/node-sass-middleware).
 * [Connect Middleware](https://github.com/senchalabs/connect#readme).
+* [Nodemon](https://github.com/remy/nodemon).
 
 ## Articles
 
@@ -38,6 +41,7 @@
 * [Using Firebase from Node.js](https://www.firebase.com/docs/web/quickstart.html).
 * [Create a Node.js project from scratch with node-sass](https://www.codefellows.org/blog/create-a-node-js-project-from-scratch-with-node-sass).
 * [Top 10 mistakes node developers make](https://www.airpair.com/node.js/posts/top-10-mistakes-node-developers-make).
+* [How can I return JSON from node.js backend to frontend without reloading or re-rendering the page?](http://stackoverflow.com/questions/11215724/how-can-i-return-json-from-node-js-backend-to-frontend-without-reloading-or-re-r).
 
 ## Unix Commands
 

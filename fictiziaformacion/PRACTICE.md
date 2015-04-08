@@ -36,8 +36,10 @@
  * Build an static server with our previous client code.
  * Create a parallel server project, trying to replicate the routes we used before.
  * _Optional:_ use an ajax call for our insertion form, instead of the html form post method.
+11. Jade.
  * Create jade templates for our pages, following `express` folder structure.
  * Create our search page, using `express` form parameters for our detail views.
+ * _Optional:_ use [Swig template system](http://paularmstrong.github.io/swig/docs/#express) as an alternative to Jade.
 
 ---
 
