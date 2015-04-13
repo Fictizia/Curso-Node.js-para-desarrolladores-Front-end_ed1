@@ -2,16 +2,17 @@
 
 * [Node.js API](http://nodejs.org/api/).
 * [Node School](http://nodeschool.io/).
+* [Firebase](http://firebase.com).
+* [Expressjs](http://expressjs.com/).
+* [Jade Documentation](http://jade-lang.com/).
+* [Swig template system](http://paularmstrong.github.io/swig/).
+* [MongoDB](http://www.mongodb.org/).
+* [Mongoose](http://mongoosejs.com/).
+* [MongoHQ](http://mongohq.com/).
 * [Socket.io](http://socket.io/).
 * [Meteor](http://nodejs.org/api/).
 * [Kraken](http://krakenjs.com/).
-* [Expressjs](http://expressjs.com/).
 * [Loopback.io](http://loopback.io).
-* [Firebase](http://firebase.com).
-* [MongoDB](http://www.mongodb.org/).
-* [Mongoose](http://mongoosejs.com/).
-* [Jade Documentation](http://jade-lang.com/).
-* [Swig template system](http://paularmstrong.github.io/swig/).
 
 ## Node Modules
 
@@ -42,6 +43,11 @@
 * [Create a Node.js project from scratch with node-sass](https://www.codefellows.org/blog/create-a-node-js-project-from-scratch-with-node-sass).
 * [Top 10 mistakes node developers make](https://www.airpair.com/node.js/posts/top-10-mistakes-node-developers-make).
 * [How can I return JSON from node.js backend to frontend without reloading or re-rendering the page?](http://stackoverflow.com/questions/11215724/how-can-i-return-json-from-node-js-backend-to-frontend-without-reloading-or-re-r).
+* [Rutas y plantillas Jade en Node.js](http://uno-de-piera.com/rutas-y-plantillas-jade-en-node-js/).
+* [NoSQL explained](https://www.mongodb.com/nosql-explained).
+* [MongoDB Architecture Guide](http://www.mongodb.com/lp/white-paper/architecture-guide).
+* [Setting Up MongoDB on cloud9](https://docs.c9.io/v1.0/docs/setting-up-mongodb).
+* [Using MongoHQ and cloud9](https://c9.io/site/blog/2013/08/introduction-to-cloud9-and-mongodb/).
 
 ## Unix Commands
 

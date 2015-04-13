@@ -1,0 +1,17 @@
+// controllers/user/views/index.js
+
+h1 Nuevo Usuario
+
+form(method="POST", action="/user")
+
+  p Nombre:
+    input(type="text" name="name")
+
+  p Fecha de nacimiento:
+    input(type="date" name="birthdate")
+
+  p ¿Es administrador?:
+    input(type="check" name="isAdmin")
+
+  p
+    button(type="submit") Enviar

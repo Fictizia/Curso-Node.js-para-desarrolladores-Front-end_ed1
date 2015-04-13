@@ -459,6 +459,153 @@ Finally, Jade also allows us to [include files inside templates](http://jade-lan
 
 ## MongoDB
 
+### [What is NoSQL?](https://www.mongodb.com/nosql-explained)
+
+NoSQL encompasses a wide variety of different database technologies that were developed in response to a rise in the volume of data stored about users, objects and products, the frequency in which this data is accessed, and performance and processing needs. Relational databases, on the other hand, were not designed to cope with the scale and agility challenges that face modern applications, nor were they built to take advantage of the cheap storage and processing power available today.
+
+### MongoDB basics
+
+MongoDB is designed for how we build and run applications with modern development techniques, programming models, computing resources, and operational automation.
+
+__How We Build Applications__
+
+* New and Complex Data Types. Rich data structures with dynamic attributes, mixed formats, text, media, arrays and other complex types are common in today’s applications.
+* Flexibility. Applications have evolving data models, because certain attributes are initially unknown, and because applications evolve over time to accommodate new features and requirements.
+* Modern Programming Languages. Object oriented programming languages interact with data in structures that are dramatically different from the way data is stored in a relational database.
+* Faster Development. Software engineering teams now embrace short, iterative development cycles. In these projects defining the data model and application functionality is a continuous process rather than a single event that happens at the beginning of the project.
+
+__How We Run Applications__
+
+* New Scalability for Big Data. Operational and analytical workloads challenge traditional capabilities on one or more dimensions of scale, availability, performance and cost effectiveness.
+* Fast, Real-time Performance. Users expect consistent, low-latency, interactive experiences from applications across many types of interfaces.
+* New Hardware. The relationship between cost and performance for compute, storage, network and main memory resources has changed dramatically. Application designs can make different optimizations and trade offs to take advantage of these resources.
+* New Computing Environments. The infrastructure requirements for applications can easily exceed the resources of a single computer, and cloud infrastructure now provides massive, elastic, cost-effective computing capacity on a metered cost model.
+* Operational Simplicity. Digital transformation in the enterprise drives the deployment of more technology on more infrastructure. Being able to automate day-to-day systems management is key to run applications efficiently at scale.
+
+__MongoDB Data Model__
+
+MongoDB stores data as documents in a binary representation called BSON (Binary JSON). The BSON encoding extends the popular JSON (JavaScript Object Notation) representation to include additional types such as int, long, and floating point. BSON documents contain one or more fields, and each field contains a value of a specific data type, including arrays, binary data and sub-documents.
+
+Documents that tend to share a similar structure are organized as collections. It may be helpful to think of collections as being analogous to a table in a relational database: documents are similar to rows, and fields are similar to columns.
+
+__MongoDB Query Model__
+
+Unlike other so-called NoSQL databases, MongoDB is not limited to simple Key-Value operations. Developers can build rich applications using complex queries and secondary indexes that unlock the value in structured, semi-structured and unstructured data.
+
+A key element of this flexibility is MongoDB's support for many types of queries. A query may return a document, a subset of specific fields within the document or complex aggregations against many documents:
+
+* __Key-value queries__ return results based on any field in the document, often the primary key.
+* __Range queries__ return results based on values defined as inequalities (e.g, greater than, less than or equal to, between).
+* __Geospatial queries__ return results based on proximity criteria, intersection and inclusion as specified by a point, line, circle or polygon.
+* __Text Search queries__ return results in relevance order based on text arguments using Boolean operators (e.g., AND, OR, NOT).
+* __Aggregation Framework queries__ return aggregations of values returned by the query (e.g., count, min, max, average, similar to a SQL GROUP BY statement).
+* __MapReduce queries__ execute complex data processing that is expressed in JavaScript and executed across data in the database.
+
+__Indexing__
+
+Indexes are a crucial mechanism for optimizing system performance and scalability while providing flexible access to the data. Like most database management systems, while indexes will improve the performance of some operations by orders of magnitude, they incur associated overhead in write operations, disk usage, and memory consumption. By default, the WiredTiger storage engine compresses indexes in RAM, freeing up more of the working set for documents.
+
+MongoDB includes support for many types of secondary indexes that can be declared on any field in the document, including fields within arrays:
+
+* Unique Indexes.
+* Compound Indexes.
+* Array Indexes.
+* TTL Indexes.
+* Geospatial Indexes.
+* Sparse Indexes.
+* Text Search Indexes.
+
+If you want to learn further information about [MongoDB Architecture Guide](http://www.mongodb.com/lp/white-paper/architecture-guide), you can download it white paper.
+
+### Using MongoDB
+
+First of all, open [MongoDB Manual](http://docs.mongodb.org/manual/), it'll be handy.
+
+Then, read [Setting Up MongoDB](https://docs.c9.io/v1.0/docs/setting-up-mongodb) and how to [setup a database](https://docs.c9.io/v1.0/docs/setup-a-database) on cloud9.
+
+MongoDB is preinstalled in your workspace. To run MongoDB, run the following below (passing the correct parameters to it). Mongodb data will be stored in the folder `data`.
+
+```
+mkdir data
+echo 'mongod --bind_ip=$IP --dbpath=data --nojournal --rest "$@"' > mongod
+chmod a+x mongod
+```
+
+You can start `mongodb` by running the mongod script on your project root:
+
+```
+./mongod
+```
+
+Now you can open the _mongo shell_ in a new Terminal, running following command:
+
+```
+mongo
+```
+
+After starting the mongo shell, your session will use the test database by default. At any time, issue the following operation at the mongo shell to report the name of the current database:
+
+```
+>db
+test
+```
+
+From the mongo shell, display the list of databases, with the following operation: `show dbs`.
+
+Switch to a new database named mydb, with the following operation: `use mydb`.
+
+MongoDB will not permanently create a database until you insert data into that database.
+
+__Create a Collection and insert Documents__
+
+```
+// Create two documents named j and k by using the following sequence of JavaScript operations:
+j = { name : "mongo" }
+k = { x : 3 }
+
+// Insert the j and k documents into the testData collection with the following sequence of operations:
+db.testData.insert( j )
+db.testData.insert( k )
+
+// Confirm that the testData collection exists. Issue the following operation:
+show collections
+
+// Confirm that the documents exist in the testData collection by issuing a query on the collection using the find() method:
+db.testData.find()
+```
+
+__Further practice__
+
+[Insert Documents using a For Loop or a JavaScript Function](http://docs.mongodb.org/manual/tutorial/getting-started/#insert-documents-using-a-for-loop-or-a-javascript-function).
+
+[Query for specific documents](http://docs.mongodb.org/manual/tutorial/getting-started/#query-for-specific-documents).
+
+__MongoDB Basic Operations__
+
+* `.insert()`
+* `.find()`
+* `.limit()`
+* `.sort()`
+* `.remove()`
+* `.drop()`
+* `.update()`
+
+Also, read the [Query and Projection Operators](http://docs.mongodb.org/manual/reference/operator/query/) list.
+
+
+
+### Integrating MongoDB with our express application
+
+Now we can integrate [MongoDB Node.js driver](https://github.com/mongodb/node-mongodb-native) or [Mongoose](http://mongoosejs.com/) in our express application.
+
+Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment.
+
+```
+npm install --save mongoose
+```
+
+Take a look at `examples/mongoose/` for code explanation.
+
 ---
 
 ## Socket.io
