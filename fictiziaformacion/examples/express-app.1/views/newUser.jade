@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    h1 New User
+    p Ir a #[a(href='/') Home].
+    form(method='post', action='/newUser')
+        div
+            label Nombre:
+            input(type='text', name='firstname', value=firstname)
+        div
+            label Apellido:
+            input(type='text', name='lastname', value=lastname)
+        div
+            input(type='submit', value='Submit')

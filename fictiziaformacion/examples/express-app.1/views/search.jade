@@ -1,0 +1,26 @@
+extends layout
+
+block content
+    h1 #{title}: search
+    p Ir a #[a(href='/') Home].
+    form(method='post', action='/search')
+        div
+            label Nombre:
+            input(type='text', name='firstname', value=firstname)
+        div
+            label Apellido:
+            input(type='text', name='lastname', value=lastname)
+        div
+            input(type='submit', value='Search')
+    if rows
+        p Resultados de la búsqueda (#{Object.keys(rows).length} registros totales):
+        - var i = 0
+        ul
+            each row in rows
+                if row.firstname == firstname || row.lastname == lastname
+                    li= row.firstname + ' ' + row.lastname
+                    - i++
+        if i === 0
+            include not-found.jade
+        else
+            p #{i} registros encontrados ...

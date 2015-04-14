@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    h1 Users
+    p Ir a #[a(href='/') Home].
+    p= result
+    if rows
+        p Resultados de la búsqueda (#{Object.keys(rows).length} registros totales):
+        - var i = 0
+        ul
+            each row in rows
+                li= row.firstname + ' ' + row.lastname
+                - i++
+        if i === 0
+            include not-found.jade
+        else
+            p #{i} registros encontrados ...
