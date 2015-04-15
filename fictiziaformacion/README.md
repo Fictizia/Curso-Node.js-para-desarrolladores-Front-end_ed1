@@ -608,6 +608,203 @@ Take a look at `examples/mongoose/` for code explanation.
 
 ---
 
-## Socket.io
+### [Geospatial Indexes and Queries](http://docs.mongodb.org/manual/applications/geospatial-indexes/)
+
+Geospatial Indexes in MongoDB can be classified according to the version of the MongoDB API used, as with version 2.4 [2dsphere indexes](http://docs.mongodb.org/manual/core/2dsphere/) where introduced, previously we could only use [2d indexes](http://docs.mongodb.org/manual/core/2d/).
+
+Here's an example using `mongoose` with `2dsphere` indexes:
+
+```
+// routes/newParking.js
+var express = require('express');
+var router = express.Router();
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+router.get('/', function(req, res, next) {
+    var Parking = new Schema({
+        name: {
+            type: String,
+            default: 'Without name'
+        },
+        location: {
+            'type': {
+                type: String, 
+                enum: ['Point', 'LineString', 'Polygon'], 
+                default: 'Point'
+            }, 
+            coordinates: {
+                type: [Number],
+                default: [0, 0]}
+            }
+    });
+    
+    Parking.index({location: '2dsphere'});
+    
+    mongoose.model('Parking', Parking, {collection: 'parkings'});
+    mongoose.connect('mongodb://0.0.0.0:27017/mydb');
+        
+    var db = mongoose.connection,
+        oData = {
+            result: 'conexion ok'
+        },
+        oParking = db.model('Parking');
+    
+    db.on('error', console.error.bind(console, 'connection error:'));
+    db.once('open', function (callback) {
+        oParking.create({
+            name: req.body.name,
+            location: {
+                type: 'Point',
+                coordinates: [req.body.lat, req.body.long]
+            }
+            }, function (poError) {
+                if (poError) {
+                    throw poError;
+                }
+                console.log('creation ok');
+                
+                oParking.find({
+                        location: {
+                            $near: {
+                                type: 'Point',
+                                coordinates: [req.body.lat, req.body.long]
+                            },
+                            $maxDistance: 100 / 6371 // See * below
+                        }
+                    }, function (poError, poDocuments) {
+                    if (poError) {
+                        throw poError;
+                    }
+                    
+                    oData.rows = poDocuments;
+                    db.close();
+                    res.render('parkings', oData);
+                });
+            });
+    });
+});
+
+module.exports = router;
+```
+
+__(*) Be careful__ when calculating distances with query operators, read [Calculate Distance Using Spherical Geometry](http://docs.mongodb.org/manual/tutorial/calculate-distances-using-spherical-geometry-with-2d-geospatial-indexes/) in order to learn about calculating distance in radians.
+
+### Model relationships and population
+
+There're some patterns that we should follow when creating our databse structure:
+
+* [Model Embedded One-to-One Relationships with Embedded Documents](http://docs.mongodb.org/manual/tutorial/model-embedded-one-to-one-relationships-between-documents/).
+* [Model Embedded One-to-Many Relationships with Embedded Documents](http://docs.mongodb.org/manual/tutorial/model-embedded-one-to-many-relationships-between-documents/).
+* [Model Embedded One-to-Many Relationships with Document References](http://docs.mongodb.org/manual/tutorial/model-referenced-one-to-many-relationships-between-documents/).
+
+There are no joins in MongoDB but sometimes we still want references to documents in other collections. This is where mongoose [population](http://mongoosejs.com/docs/populate.html) comes in.
+
+Population is the process of automatically replacing the specified paths in the document with document(s) from other collection(s). We may populate a single document, multiple documents, plain object, multiple plain objects, or all objects returned from a query. Let's look at some examples.
+
+```
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
+  
+var personSchema = Schema({
+  _id     : Number,
+  name    : String,
+  age     : Number,
+  stories : [{ type: Schema.Types.ObjectId, ref: 'Story' }]
+});
+
+var storySchema = Schema({
+  _creator : { type: Number, ref: 'Person' },
+  title    : String,
+  fans     : [{ type: Number, ref: 'Person' }]
+});
+
+var Story  = mongoose.model('Story', storySchema);
+var Person = mongoose.model('Person', personSchema);
+```
+
+So far we've created two Models. Our Person model has it's stories field set to an array of ObjectIds. The ref option is what tells Mongoose which model to use during population, in our case the Story model. All _ids we store here must be document _ids from the Story model. We also declared the Story _creator property as a Number, the same type as the _id used in the personSchema. It is important to match the type of _id to the type of ref.
+
+Saving refs to other documents works the same way you normally save properties, just assign the _id value:
+
+```
+var aaron = new Person({ _id: 0, name: 'Aaron', age: 100 });
+
+aaron.save(function (err) {
+  if (err) return handleError(err);
+  
+  var story1 = new Story({
+    title: "Once upon a timex.",
+    _creator: aaron._id    // assign the _id from the person
+  });
+  
+  story1.save(function (err) {
+    if (err) return handleError(err);
+    // thats it!
+  });
+})
+```
+
+So far we haven't done anything much different. We've merely created a Person and a Story. Now let's take a look at populating our story's _creator using the query builder:
+
+```
+Story
+.findOne({ title: 'Once upon a timex.' })
+.populate('_creator')
+.exec(function (err, story) {
+  if (err) return handleError(err);
+  console.log('The creator is %s', story._creator.name);
+  // prints "The creator is Aaron"
+})
+```
+
+Populated paths are no longer set to their original _id , their value is replaced with the mongoose document returned from the database by performing a separate query before returning the results.
+
+Arrays of refs work the same way. Just call the populate method on the query and an array of documents will be returned in place of the original _ids.
+
+## [Socket.io](http://socket.io/docs/) introduction
+
+Server Installation: `npm install socket.io`.
+
+Client download is not necessary, [take a look here to know why](http://socket.io/download/).
+
+Creating a basic server with `express` and `socket.io`:
+
+```
+// server.js
+var app = require('express').createServer();
+var io = require('socket.io')(app);
+
+app.listen(80);
+
+app.get('/', function (req, res) {
+  res.sendfile(__dirname + '/index.html');
+});
+
+io.on('connection', function (socket) {
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
+});
+
+<!-- index.html -->
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io.connect('http://localhost');
+  socket.on('news', function (data) {
+    console.log(data);
+    socket.emit('my other event', { my: 'data' });
+  });
+</script>
+```
+
+Take a look at `examples/socketio-chat` for further code explanation.
+
+Within c9.io, you can create a new node.js project for code reference, it'll be bootstraped with socket.io.
+
+---
+
+_Lesson Ten_
 
 ---

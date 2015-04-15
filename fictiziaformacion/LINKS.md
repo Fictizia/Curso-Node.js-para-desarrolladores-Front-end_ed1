@@ -48,6 +48,9 @@
 * [MongoDB Architecture Guide](http://www.mongodb.com/lp/white-paper/architecture-guide).
 * [Setting Up MongoDB on cloud9](https://docs.c9.io/v1.0/docs/setting-up-mongodb).
 * [Using MongoHQ and cloud9](https://c9.io/site/blog/2013/08/introduction-to-cloud9-and-mongodb/).
+* [Mongoose Connection Best Practice](http://theholmesoffice.com/mongoose-connection-best-practice/).
+* [Calculate Distance Using Spherical Geometry](http://docs.mongodb.org/manual/tutorial/calculate-distances-using-spherical-geometry-with-2d-geospatial-indexes/).
+* [Using the Aggregation Framework with MongoDB Node.js Driver](http://mongodb.github.io/node-mongodb-native/2.0/tutorials/aggregation/).
 
 ## Unix Commands
 

@@ -44,7 +44,10 @@
  * Create a test db on your c9 workspace.
  * Launch some CRUD operations, to get used to the `mongod` interface.
  * Integrate MongoDB Node.js driver and create a sample connection module.
+13. Mongooose:
  * Integrate Mongoose within your express application.
-13. Socket.io
- * ... 
+ * Practice with Geospatial Indexes and Queries.
+ * Practice with population and related database models.
+14. Socket.io
+ * Create a bootstraped socket.io application.
 
