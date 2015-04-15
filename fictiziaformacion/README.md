@@ -801,7 +801,7 @@ io.on('connection', function (socket) {
 
 Take a look at `examples/socketio-chat` for further code explanation.
 
-We'll follow this excellent tutorial: [Using Node.js and Websockets to Build a Chat Service](http://code.tutsplus.com/tutorials/using-nodejs-and-websockets-to-build-a-chat-service--net-34482).
+We'll follow this tutorial: [Using Node.js and Websockets to Build a Chat Service](http://code.tutsplus.com/tutorials/using-nodejs-and-websockets-to-build-a-chat-service--net-34482).
 
 Within c9.io, you can create a new node.js project for code reference, it'll be bootstraped with socket.io.
 
