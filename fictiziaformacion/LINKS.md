@@ -13,6 +13,8 @@
 * [Meteor](http://nodejs.org/api/).
 * [Kraken](http://krakenjs.com/).
 * [Loopback.io](http://loopback.io).
+* [Heroku](https://www.heroku.com/).
+* [Docker](https://www.docker.com/).
 
 ## Node Modules
 

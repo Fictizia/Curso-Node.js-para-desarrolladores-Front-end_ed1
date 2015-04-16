@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    h1 New Parking
+    p Ir a #[a(href='/') Home].
+    form(method='post', action='/newParking')
+        div
+            label Nombre:
+            input(type='text', name='name', value=name)
+        div
+            label Latitud:
+            input(type='text', name='lat', value=lat)
+        div
+            label Longitud:
+            input(type='text', name='long', value=long)
+        div
+            input(type='submit', value='Submit')
+    if rows
+        p Resultados de la búsqueda (#{Object.keys(rows).length} registros totales):
+        - var i = 0
+        ul
+            each row in rows
+                li= row.name + ' (' + row.location.coordinates[0] + ', ' + row.location.coordinates[1] + ')'
+                - i++
+        if i === 0
+            include not-found.jade
+        else
+            p #{i} registros encontrados ...
