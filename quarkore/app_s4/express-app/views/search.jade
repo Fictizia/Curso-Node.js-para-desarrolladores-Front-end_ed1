@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1 #{title}: Buscar
+  p Efectúa una búsqueda
+  form(method='post', action='/search')
+    label Nombre
+    input(type='text', name='name', value=name)
+    label email
+    input(type='email', name='email', value=email)
+    label country
+    input(type='text', name='country', value=country)
+    input(type='submit', value='search')
+  div
+    p #{rows}...  resultados para name: #{name}
+    p country: #{country}
+    div
+      ul
+        each res in resultArray
+          li
+            p=res.name
+            p=res.email
+            p=res.country
+            p message is #{res.message}

@@ -1,0 +1,29 @@
+extends layout
+
+block content
+    h1 nuevo parking
+    p ir a #[a(href='/') home]
+    
+    form(method='post', action='/geoMongo')
+        div
+            label Nombre:
+            input(type='text', name='name', value='name')
+        div
+            label lat:
+            input(type='text', name='lat', value='lat')
+        div
+            label len:
+            input(type='text', name='len', value='len')
+        div
+            input(type='submit', value='test')
+    if rows
+        p resultado:
+        - var i = 0
+        ul
+            each row in rows
+                li= row.name + '(' + row.location.coordinates[0] + ',' + row.location.coordinates[1] + ')'
+                
+        if i === 0
+            p No ha encontrado resultados
+        else
+            p #{i} resultados encontrados

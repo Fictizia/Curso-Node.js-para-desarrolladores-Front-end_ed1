@@ -1,0 +1,21 @@
+extends layout
+block content
+  h1 #{title}: Añadir
+  p Introduce los campos
+  form(method='post', action='/add')
+    label Nombre
+    input(type='text', name='name', value=name)
+    label email
+    input(type='email', name='email', value=email)
+    label country
+    input(type='text', name='country', value=country)
+    label message
+    input(type='textarea', name='message')
+    input(type='submit', value='Añadir...')
+  div
+    h2 Mensaje introducido... 
+    p Nombre: #{name}
+    p País: #{country}
+    p email: #{email}
+    p Mensaje: #{message}
+    p Mensaje enviado con éxito
