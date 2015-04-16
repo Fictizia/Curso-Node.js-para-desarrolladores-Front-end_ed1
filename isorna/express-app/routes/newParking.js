@@ -5,31 +5,41 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 router.get('/', function(req, res, next) {
+  res.render('newParking');
+});
+
+router.post('/', function(req, res, next) {
     var Parking = new Schema({
-        name: {
-            type: String,
-            default: 'Without name'
-        },
-        location: {
-            'type': {
-                type: String, 
-                enum: ['Point', 'LineString', 'Polygon'], 
-                default: 'Point'
-            }, 
-            coordinates: {
-                type: [Number],
-                default: [0, 0]}
+            name: {
+                type: String,
+                default: 'Without name'
+            },
+            location: {
+                type: {
+                    type: String, 
+                    enum: ['Point', 'LineString', 'Polygon'], 
+                    default: 'Point'
+                }, 
+                coordinates: {
+                    type: [Number],
+                    default: [0, 0]
+                }
             }
-    });
+        },
+        {collection: 'parkings'});
     
     Parking.index({location: '2dsphere'});
     
-    mongoose.model('Parking', Parking, {collection: 'parkings'});
+    mongoose.model('Parking', Parking);
+    
     mongoose.connect('mongodb://0.0.0.0:27017/mydb');
         
     var db = mongoose.connection,
         oData = {
-            result: 'conexion ok'
+            result: 'conexion ok',
+            name: req.body.name,
+            lat: req.body.lat,
+            long: req.body.long
         },
         oParking = db.model('Parking');
     
@@ -53,7 +63,7 @@ router.get('/', function(req, res, next) {
                                 type: 'Point',
                                 coordinates: [req.body.lat, req.body.long]
                             },
-                            $maxDistance: 100 / 6371 // See * below
+                            $maxDistance: 500 // 500m
                         }
                     }, function (poError, poDocuments) {
                     if (poError) {
@@ -62,7 +72,7 @@ router.get('/', function(req, res, next) {
                     
                     oData.rows = poDocuments;
                     db.close();
-                    res.render('parkings', oData);
+                    res.render('newParking', oData);
                 });
             });
     });
