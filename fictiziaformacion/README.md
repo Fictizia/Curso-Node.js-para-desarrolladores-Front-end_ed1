@@ -801,12 +801,64 @@ io.on('connection', function (socket) {
 
 Take a look at `examples/socketio-chat` for further code explanation.
 
-We'll follow this tutorial: [Using Node.js and Websockets to Build a Chat Service](http://code.tutsplus.com/tutorials/using-nodejs-and-websockets-to-build-a-chat-service--net-34482).
+---
 
-Within c9.io, you can create a new node.js project for code reference, it'll be bootstraped with socket.io.
+### Socket.io & Angular.js Practice
+
+We'll use this tutorial: [Using Node.js and Websockets to Build a Chat Service](http://code.tutsplus.com/tutorials/using-nodejs-and-websockets-to-build-a-chat-service--net-34482) to understand Socket.io basics.
+
+Within c9.io, you can create a new node.js project for code reference, it'll be bootstraped with Socket.io, Angular.js and Bootstrap.
+
+First of all, create your c9 node.js project and let's see how Socket.io interacts with Angular.js.
+
+In practice #14 we'll replicate our express application, but now we'll use Socket.io & Angular.js.
+
+__[Server practice](http://socket.io/docs/server-api/)__
+
+With Socket.io, you can assign different [rooms](http://socket.io/docs/server-api/#socket#join(name:string[,-fn:function]):socket) to each socket, use this functionality in your practice. You can also [emit events to single rooms](http://socket.io/docs/server-api/#socket#to(room:string):socket), instead to a single socket or broadcast them.
+
+Finally, you can access each connected [client's navigator information](http://socket.io/docs/server-api/#client#request), use it to handle your messages and client accordingly.
+
+__[Client practice](http://socket.io/docs/client-api/)__
+
+Although Socket.IO exposes an io variable on the window, it's better to encapsulate it in AngularJS's Dependency Injection system.
+
+```
+app.factory('socket', function ($rootScope) {
+  var socket = io.connect();
+  return {
+    on: function (eventName, callback) {
+      socket.on(eventName, function () {  
+        var args = arguments;
+        $rootScope.$apply(function () {
+          callback.apply(socket, args);
+        });
+      });
+    },
+    emit: function (eventName, data, callback) {
+      socket.emit(eventName, data, function () {
+        var args = arguments;
+        $rootScope.$apply(function () {
+          if (callback) {
+            callback.apply(socket, args);
+          }
+        });
+      })
+    }
+  };
+});
+```
+
+Let's review this [HTML5 Rocks article about AngularJS and Socket.io](http://www.html5rocks.com/en/tutorials/frameworks/angular-websockets/) to learn more about them working together.
+
+And finally, take a look at [btford/angular-socket-io](https://github.com/btford/angular-socket-io) project on Github, you'll find it helpful if you want to work with AngularJS and Socket.io.
 
 ---
 
-_Lesson Ten_
+_Lesson Eleven_
+
+---
+
+_Lesson Twelve_
 
 ---

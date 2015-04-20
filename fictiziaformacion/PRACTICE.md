@@ -49,5 +49,7 @@
  * Practice with Geospatial Indexes and Queries.
  * Practice with population and related database models.
 14. Socket.io
- * Create a bootstraped socket.io application.
+ * Create a bootstraped Socket.io application on your c9 workspace.
+ * Replicate our express application, now with Socket.io & Angular.js.
+ * Practice with Socket.io rooms.
 

@@ -53,6 +53,8 @@
 * [Mongoose Connection Best Practice](http://theholmesoffice.com/mongoose-connection-best-practice/).
 * [Calculate Distance Using Spherical Geometry](http://docs.mongodb.org/manual/tutorial/calculate-distances-using-spherical-geometry-with-2d-geospatial-indexes/).
 * [Using the Aggregation Framework with MongoDB Node.js Driver](http://mongodb.github.io/node-mongodb-native/2.0/tutorials/aggregation/).
+* [Getting Chatty with Angular, Socket.IO, Node/Express and Bootstrap](http://chariotsolutions.com/blog/post/getting-chatty-angular-socket-io-nodeexpress-bootstrap/).
+* [Writing an AngularJS App with Socket.IO](http://www.html5rocks.com/en/tutorials/frameworks/angular-websockets/).
 
 ## Unix Commands
 
