@@ -855,10 +855,32 @@ And finally, take a look at [btford/angular-socket-io](https://github.com/btford
 
 ---
 
-_Lesson Eleven_
+## [Meteor](https://www.meteor.com/)
+
+The "Meteor Platform" is a recommended stack, a standard set of core packages that are designed to work well together. This stack is used by most Meteor developers and is what is taught by books such as [Discover](https://www.discovermeteor.com/) Meteor. It's a great choice for a wide variety of apps.
+
+If you want to install `Meteor` on Linux or OS X, just release this from your terminal:
+
+```
+curl https://install.meteor.com/ | sh
+```
+
+There's also [an official installer for Windows](https://install.meteor.com/windows) if you need it.
+
+Go to your c9 dashboard and create a new project, choose `Meteor` to see the bootstraped project.
+
+We'll follow the [official tutorial](https://www.meteor.com/try/) for our practice.
+
+Here you've a link to the [Meteor Documentation](http://docs.meteor.com/), read carefully about `Command Line Tool` and `File Structure`.
+
+Remember that you can [deploy your Meteor app as a mobile app](http://docs.meteor.com/#/basic/buildingmobileapps) with its built-in methods.
 
 ---
 
 _Lesson Twelve_
+
+## [Loopback](http://loopback.io/) and [StrongLoop](https://strongloop.com/)
+
+## [Kraken](http://krakenjs.com/)
 
 ---

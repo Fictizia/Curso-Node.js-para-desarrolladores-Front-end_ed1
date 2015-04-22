@@ -10,9 +10,10 @@
 * [Mongoose](http://mongoosejs.com/).
 * [MongoHQ](http://mongohq.com/).
 * [Socket.io](http://socket.io/).
-* [Meteor](http://nodejs.org/api/).
+* [Meteor](https://www.meteor.com/).
 * [Kraken](http://krakenjs.com/).
 * [Loopback.io](http://loopback.io).
+* [StrongLoop](https://strongloop.com/).
 * [Heroku](https://www.heroku.com/).
 * [Docker](https://www.docker.com/).
 
