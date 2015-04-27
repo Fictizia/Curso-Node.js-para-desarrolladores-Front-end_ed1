@@ -877,10 +877,10 @@ Remember that you can [deploy your Meteor app as a mobile app](http://docs.meteo
 
 ---
 
-_Lesson Twelve_
+## Other Node.js Frameworks
 
-## [Loopback](http://loopback.io/) and [StrongLoop](https://strongloop.com/)
-
-## [Kraken](http://krakenjs.com/)
+* [StrongLoop](https://strongloop.com/).
+* [Loopback](http://loopback.io/).
+* [Kraken](http://krakenjs.com/).
 
 ---
