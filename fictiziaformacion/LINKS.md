@@ -8,7 +8,7 @@
 * [Swig template system](http://paularmstrong.github.io/swig/).
 * [MongoDB](http://www.mongodb.org/).
 * [Mongoose](http://mongoosejs.com/).
-* [MongoHQ](http://mongohq.com/).
+* [Compose.io](http://mongohq.com/).
 * [Socket.io](http://socket.io/).
 * [Meteor](https://www.meteor.com/).
 * [Kraken](http://krakenjs.com/).
@@ -16,6 +16,7 @@
 * [StrongLoop](https://strongloop.com/).
 * [Heroku](https://www.heroku.com/).
 * [Docker](https://www.docker.com/).
+* [Yeoman](http://yeoman.io/).
 
 ## Node Modules
 
@@ -24,6 +25,7 @@
 * [Node Sass Middleware](https://www.npmjs.com/package/node-sass-middleware).
 * [Connect Middleware](https://github.com/senchalabs/connect#readme).
 * [Nodemon](https://github.com/remy/nodemon).
+* [NPM RSS Module](https://www.npmjs.com/package/rss).
 
 ## Articles
 
@@ -38,7 +40,6 @@
 * [Serving static files with Node.js](http://www.sitepoint.com/serving-static-files-with-node-js/).
 * [Node RSS Module](http://stackoverflow.com/questions/5722638/node-js-rss-module).
 * [Deliver real-time information using node.js](http://www.no-margin-for-errors.com/blog/2010/07/26/deliver-real-time-information-to-your-users-using-node-js/).
-* [NPM RSS Module](https://www.npmjs.com/package/rss).
 * [Basic routing tutorial with Expressjs](http://expressjs.com/starter/basic-routing.html).
 * [Node.js Advanced Servers](https://learn.bevry.me/node/server-part2).
 * [Using Node.js and Websockets to Build a Chat Service](http://code.tutsplus.com/tutorials/using-nodejs-and-websockets-to-build-a-chat-service--net-34482).
